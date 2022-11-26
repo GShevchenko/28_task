@@ -1,15 +1,15 @@
 from typing import List
 
 
-def ConquestCampaign(size_y: int, size_x: int, seed_count: int, seeds: List[int]) -> int:
+def ConquestCampaign(N: int, M: int, L: int, battalion: List[int]) -> int:
     days = 1
-    matrix = init_matrix(size_y, size_x, seed_count, seeds)
-    total_filled = int(len(seeds) / 2)
-    while total_filled < size_x * size_y:
+    matrix = init_matrix(N, M, L, battalion)
+    total_filled = int(len(battalion) / 2)
+    while total_filled < M * N:
         filled_today = []
-        for y in range(size_y):
+        for y in range(N):
             interim = matrix[y]
-            for x in range(size_x):
+            for x in range(M):
                 if interim[x] == 1 and [y, x] not in filled_today:
                     filled_today.append([y, x])
                     total_filled += fill_neighbors(matrix, y, x, filled_today)
