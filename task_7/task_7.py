@@ -31,5 +31,10 @@ def split(long_string: str, length: int) -> list[str]:
                 i += 1
                 concat_str = concat_str + " " + splitted_strings[i]
             resulted_strings.append(concat_str)
+        if len(splitted_strings[i]) > length:
+            delta = 0
+            while delta < len(splitted_strings[i]):
+                resulted_strings.append(splitted_strings[i][delta:length + delta])
+                delta += length
         i += 1
     return resulted_strings
