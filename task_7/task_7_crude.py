@@ -23,7 +23,6 @@ def split(long_string: str, length: int) -> list[str]:
     size = len(splitted_strings)
     i = 0
     while i < size:
-        logging.info("Start i is: %i", i)
         if splitted_strings[i] == " " or splitted_strings[i] == "":
             i += 1
             continue
@@ -33,11 +32,14 @@ def split(long_string: str, length: int) -> list[str]:
             continue
         if len(splitted_strings[i]) < length:
             concat_str = splitted_strings[i]
-            while i < size - 1 and len(concat_str) + len(splitted_strings[i + 1]) < length:
+            delta = 0
+            while i + delta < size - 1 and len(concat_str) + len(splitted_strings[i + delta + 1]) < length:
                 i += 1
                 concat_str = concat_str + " " + splitted_strings[i]
-            # logging.debug("Concat str: %s, i: %i", concat_str, i)
+            logging.debug("Concat str: %s, i: %i", concat_str, i)
             resulted_strings.append(concat_str)
+            if delta == 0:
+                i += 1
             continue
         if len(splitted_strings[i]) > length:
             delta = 0
@@ -54,9 +56,9 @@ logging.basicConfig(
     level=logging.DEBUG,
     datefmt='%Y-%m-%d %H:%M:%S')
 subs = 'строк'
-my_string = '1) строка разбивается на набор строк через выравнивание по заданной ширине.'
+my_string = '1) строка разбивается на набор строка через выравнивание по заданной ширине.'
 # result = WordSearch(12, my_string, subs)
-result1 = WordSearch(3, '123456123', '123')
+result1 = WordSearch(3, "123456123", '123')
 # logging.debug(result)
 logging.debug("Result is: %s", result1)
-logging.debug(my_string[0:4])
+# logging.debug(my_string[0:4])
