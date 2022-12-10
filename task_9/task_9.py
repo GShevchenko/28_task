@@ -1,5 +1,5 @@
-import logging
 import math
+
 
 def TheRabbitsFoot(s: str, encode: bool) -> str:
     if encode:
@@ -11,7 +11,7 @@ def TheRabbitsFoot(s: str, encode: bool) -> str:
 def make_encode(data: str) -> str:
     data_without_space: str = data.replace(" ", "")
     size: int = len(data_without_space)
-    crude_size: float = size**0.5
+    crude_size: float = size ** 0.5
     row_count: int = math.floor(crude_size)
     column_count: int = math.ceil(crude_size)
     while row_count * column_count < size:
@@ -30,7 +30,6 @@ def make_encode(data: str) -> str:
     return result
 
 
-
 def make_decode(encoded_str: str) -> str:
     result = ''
     encoded_arr: list[str] = encoded_str.split(" ")
@@ -41,19 +40,3 @@ def make_decode(encoded_str: str) -> str:
             except:
                 continue
     return result
-
-
-
-logging.basicConfig(
-    format='%(asctime)s %(levelname)-8s %(message)s',
-    level=logging.DEBUG,
-    datefmt='%Y-%m-%d %H:%M:%S')
-data: str = 'отдай мою кроличью лапку'
-expected_result: str = 'омоюу толл дюиа акчп йрьк'
-list_d = [data[0: 5]]
-result = make_encode(data)
-logging.debug("Encoded string is %s", result)
-logging.debug(make_decode(result))
-logging.debug("---------------------------------------------------")
-logging.debug(TheRabbitsFoot(data, True))
-logging.debug(TheRabbitsFoot(expected_result, False))
