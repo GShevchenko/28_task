@@ -31,7 +31,7 @@ def make_encode(data: str) -> str:
 
 
 def make_decode(encoded_str: str) -> str:
-    result = ''
+    result: str = ''
     encoded_arr: list[str] = encoded_str.split(" ")
     for i in range(len(encoded_arr[0])):
         for j in range(len(encoded_arr)):
@@ -39,4 +39,4 @@ def make_decode(encoded_str: str) -> str:
                 result += encoded_arr[j][i]
             except:
                 continue
-    return result
+    return result.strip()
