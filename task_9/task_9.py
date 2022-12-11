@@ -39,4 +39,5 @@ def make_decode(encoded_str: str) -> str:
                 result += encoded_arr[j][i]
             except:
                 continue
+        result += " "
     return result.strip()
