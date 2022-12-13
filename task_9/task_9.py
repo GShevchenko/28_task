@@ -29,7 +29,7 @@ def make_encode(data: str) -> str:
             except IndexError:
                 continue
         result += " "
-    return result
+    return result.strip()
 
 
 def make_decode(encoded_str: str) -> str:

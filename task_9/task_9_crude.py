@@ -27,7 +27,7 @@ def make_encode(data: str) -> str:
             except IndexError:
                 continue
         result += " "
-    return result
+    return result.strip()
 
 
 
